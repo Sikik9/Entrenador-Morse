@@ -1,12 +1,12 @@
 const ALPHABET = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
     'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
-    'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+    'M': '--', 'N': '-.', 'Ñ': '--.--', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
     'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
     'Y': '-.--', 'Z': '--..'
 };
 
-const QWERTY = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+const QWERTY = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 const MAX_ROUNDS = 10;
 const DOT_DURATION_MS = 180;
 
@@ -132,6 +132,10 @@ function startGame() {
     currentIndex = 0;
     correctCount = 0;
     switchScreen('practice');
+
+    // const mobileInput = document.getElementById('mobile-input');
+    // if (mobileInput) mobileInput.focus();
+
     loadRound();
 }
 
@@ -197,7 +201,7 @@ function evaluateInput(inputChar) {
 function handleKeyDown(e) {
     if (screens.practice && screens.practice.classList.contains('active') && !isProcessing) {
         const key = e.key.toUpperCase();
-        if (/^[A-Z]$/.test(key)) {
+        if (/^[A-ZÑ]$/.test(key)) {
             evaluateInput(key);
         }
     }
@@ -257,4 +261,27 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('keydown', handleKeyDown);
 
     buildUI();
+
+//     // Captura la entrada del teclado nativo del móvil
+//     const mobileInput = document.getElementById('mobile-input');
+//     if (mobileInput) {
+//         mobileInput.addEventListener('input', (e) => {
+//             // Obtiene el último carácter escrito y lo pasa a mayúsculas
+//             const char = e.target.value.slice(-1).toUpperCase();
+            
+//             // Valida que sea una letra o Ñ y que no estemos en pausa entre rondas
+//             if (/^[A-ZÑ]$/.test(char) && !isProcessing) {
+//                 evaluateInput(char);
+//             }
+            
+//             // Vacía el input para que esté listo para la siguiente letra
+//             e.target.value = "";
+//         });
+
+//         // Si el usuario toca la pantalla, forzamos que el teclado no se cierre
+//         document.getElementById('practice-screen').addEventListener('click', () => {
+//             mobileInput.focus();
+//         });
+// }
+
 });
