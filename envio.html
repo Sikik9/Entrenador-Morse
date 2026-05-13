@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Entrenador Morse Transmisión</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scrips/envio.js" defer></script>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">MORSE<span>HUB</span></a>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="recepcion.html">Recepción</a>
+                <a href="envio.html">Transmisión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="setup-screen" class="screen active">
+        <h1>Transmisión</h1>
+        
+        <div class="grid-controls">
+            <button id="select-all-btn" type="button">Seleccionar Todo</button>
+        </div>
+        <div id="letter-grid"></div>
+        
+        <div class="options-container">
+            <div class="option-group">
+                <h2>Dificultad (Tiempo límite)</h2>
+                <label><input type="radio" name="difficulty" value="3000" checked> Fácil (3s)</label>
+                <label><input type="radio" name="difficulty" value="2000"> Medio (2s)</label>
+                <label><input type="radio" name="difficulty" value="1000"> Difícil (1s)</label>
+                <label><input type="radio" name="difficulty" value="0"> Sin límite</label>
+            </div>
+        </div>
+
+        <button id="start-btn">Practicar</button>
+        <p id="setup-error" class="error-text hidden">Selecciona al menos una letra.</p>
+    </div>
+
+    <div id="practice-screen" class="screen">
+        <div id="progress-counter">0 / 10</div>
+        <div id="target-letter"></div>
+        <div id="input-display"></div>
+        <div id="feedback-display"></div>
+        
+        <div id="transmit-zone">
+            <button id="transmit-btn">TRANSMITIR</button>
+            <p class="desktop-hint">O usa la barra espaciadora</p>
+        </div>
+    </div>
+
+    <div id="summary-screen" class="screen">
+        <h1>Entrenamiento Finalizado</h1>
+        <div id="score-display"></div>
+        <button id="restart-btn">Volver al inicio</button>
+    </div>
+
+</body>
+</html>
