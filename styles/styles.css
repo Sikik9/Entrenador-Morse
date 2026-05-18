@@ -300,6 +300,7 @@ button.primary-btn:active, #start-btn:active, #restart-btn:active {
     justify-content: space-between;
     align-items: center;
     transition: transform 0.2s;
+    cursor: pointer;
 }
 
 .dic-item:hover {
